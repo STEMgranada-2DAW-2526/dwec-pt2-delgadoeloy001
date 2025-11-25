@@ -1,8 +1,9 @@
-import { useContext,useState } from "react";
+import { useContext, useState } from "react";
 import { GameContext } from "./GameContext";
 
 export default function Game() {
-    const { state,dispatch } = useContext(GameContext);
+    const { state, dispatch } = useContext(GameContext);
+    
     return (
         <div>
             <h1>Caramelos: {state.caramels}</h1>
@@ -13,3 +14,4 @@ export default function Game() {
         </div>
     )
 }
+

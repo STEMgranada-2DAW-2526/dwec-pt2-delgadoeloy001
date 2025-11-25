@@ -5,6 +5,7 @@ import UpgradesBoard from './UpgradesBoard';
 import { GameProvider } from './GameContext';
 
 function App() {
+  
   return (
     <>
       <GameProvider>
