@@ -1,13 +1,4 @@
-import { useEffect, useReducer } from 'react'
-import './App.css'
+import { useContext,useState } from "react";
+import { GameContext } from "./GameContext";
 
-export const GameContext = React.createContext();
-
-export default function GameProvider() {
-    const [candy, setCandy] = useState(0);
-    const [damagePerShot, setDamagePerShot] = useState(0);
-    const [mejorasCañon, setMejorasCañon] = useState(0);
-    const [oleada, setOleada] = useState(0);
-
-
-}
+const [state, dispatch] = useReducer(gameReduced, INITIAL_STATE)
