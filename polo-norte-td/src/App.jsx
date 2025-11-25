@@ -7,12 +7,12 @@ function App() {
       <GameProvider>
         <div class="container text-center">
           <div class="row">
-            <Ruleta />
-            <Dineros />
+            <Game />
+            <UpgradesBoard />
           </div>
           <Tablero />
         </div>
-      </RuletaProvider>
+      </GameProvider>
     </>
   )
 }
