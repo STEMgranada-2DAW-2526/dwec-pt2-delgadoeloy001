@@ -14,11 +14,6 @@ export const initialState = {
 
 function gameReducer(state, action) {
     switch (action.type) {
-        case 'INCREMENT_CARAMELS':
-            return {
-                ...state,
-                caramels: state.caramels + action.payload
-            };
         case 'DECREMENT_CARAMELS':
             return {
                 ...state,
@@ -28,6 +23,32 @@ function gameReducer(state, action) {
             return {
                 ...state,
                 damagePerShot: state.damagePerShot + action.payload
+            };
+        case 'ADD_UPGRADE':
+            return {
+                ...state,
+                upgrades: state.upgrades.push(action.payload)
+            };
+        case 'INCREMENT_AUTO_SHOTS':
+            return {
+                ...state,
+                autoShotsPerSecond: state.autoShotsPerSecond + action.payload
+            };
+        case 'NEXT_WAVE':
+            return {
+                ...state,
+                waveGoal: state.waveGoal + state.waveGoal * 0.1,
+                caramels: state.caramels + 10
+            };
+        case 'DEAL_DAMAGE':
+            return {
+                ...state,
+                damageDealt: state.damageDealt + action.payload
+            };
+        case 'RESET_DAMAGE':
+            return {
+                ...state,
+                damageDealt: 0
             };
         default:
             return state;

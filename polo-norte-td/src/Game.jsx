@@ -1,4 +1,6 @@
 import { useContext,useState } from "react";
-import { GameContext } from "./GameContext";
+import { GameProvider } from "./GameContext";
 
-const [state, dispatch] = useReducer(gameReduced, INITIAL_STATE)
+export default function Game() {
+    const { state, dispatch } = useContext(GameProvider);
+    
