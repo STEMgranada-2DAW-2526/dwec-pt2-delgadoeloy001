@@ -45,26 +45,24 @@ export default function UpgradesBoard() {
     return (
         <div>
             <h2>Mejoras Disponibles</h2>
-            <button> {() => {
+            <button onclick={() => {
                 let cost = CostUpgrades();
+                console.log(cost);
                 let dmg = DmgUpgrades();
-                if (state.upgrades.length = 0) {
-                    if (state.caramels >= 10) {
+                    if (state.caramels >= cost) {
                         dispatch({ type: 'DECREMENT_CARAMELS', payload: cost });
                         dispatch({ type: 'UPGRADE_DAMAGE', payload: dmg });
                         dispatch({ type: 'ADD_UPGRADE', payload: upgradesList[0] });
                     }
-                }
-            }}Mejorar Daño ({CostUpgrades()} caramelos)</button>
+            }}>Mejorar Daño ({CostUpgrades()} caramelos)</button>
             <h2>Comprar multiplicador</h2>
-            <button>{() => {
+            <button onclick={() => {
                 let cost = CostMultipliers();
                 if (state.caramels >= cost) {
                     dispatch({ type: 'DECREMENT_CARAMELS', payload: cost });
                     dispatch({ type: 'INCREMENT_AUTO_SHOTS', payload: 1 });
                 }
-            }}Comprar multiplicador ({CostMultipliers()} caramelos)
-            </button>
+            }}>Comprar multiplicador ({CostMultipliers()} caramelos)</button>
         </div>
     );
 }

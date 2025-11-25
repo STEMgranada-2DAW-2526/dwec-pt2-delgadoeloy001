@@ -1,16 +1,15 @@
-import { createContext, useReducer, useContext } from 'react'
+import { createContext, useReducer, useContext, useEffect } from 'react'
 
 export const GameContext = createContext();
 
 export const initialState = {
     caramels: 20,
     damagePerShot: 1,
-    waveGoal: 100,
+    waveGoal: 10,
     damageDealt: 0,
     autoShotsPerSecond: 0,
     upgrades: [],
 };
-
 function gameReducer(state, action) {
     switch (action.type) {
         case 'DECREMENT_CARAMELS':
@@ -36,8 +35,9 @@ function gameReducer(state, action) {
         case 'NEXT_WAVE':
             return {
                 ...state,
-                waveGoal: state.waveGoal + state.waveGoal * 0.1,
-                caramels: state.caramels + 10
+                waveGoal: Math.round(state.waveGoal + state.waveGoal * 0.1),
+                caramels: state.caramels + 5,
+                damageDealt: 0
             };
         case 'DEAL_DAMAGE':
             return {
@@ -57,7 +57,7 @@ function gameReducer(state, action) {
 
 export function GameProvider({ children }) {
     const [state, dispatch] = useReducer(gameReducer, initialState);
-
+    
     return (
         <GameContext.Provider value={{ state, dispatch }}>
             {children}
