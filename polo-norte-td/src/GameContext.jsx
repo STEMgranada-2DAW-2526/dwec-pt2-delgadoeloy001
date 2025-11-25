@@ -1,5 +1,4 @@
 import { createContext, useReducer, useContext } from 'react'
-import './App.css'
 
 export const GameContext = createContext();
 
@@ -9,7 +8,7 @@ export const initialState = {
     waveGoal: 100,
     damageDealt: 0,
     autoShotsPerSecond: 0,
-    upgrades: []
+    upgrades: [],
 };
 
 function gameReducer(state, action) {
@@ -56,7 +55,7 @@ function gameReducer(state, action) {
 
 }
 
-export default function GameProvider() {
+export function GameProvider({ children }) {
     const [state, dispatch] = useReducer(gameReducer, initialState);
 
     return (
